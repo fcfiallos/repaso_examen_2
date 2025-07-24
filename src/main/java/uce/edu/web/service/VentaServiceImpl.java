@@ -1,6 +1,5 @@
 package uce.edu.web.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class VentaServiceImpl implements IVentaService{
             venta.setNumeroVenta(ventaProdTo.getNumeroVenta());
             venta.setCedulaCliente(ventaProdTo.getCedulaCliente());
             
-            BigDecimal totalVenta = BigDecimal.ZERO;
+            double totalVenta = 0.0;
             List<DetalleVenta> detalleVentas = new ArrayList<>();
             
             // Procesar cada producto en la venta
@@ -73,7 +72,7 @@ public class VentaServiceImpl implements IVentaService{
                 Producto producto = validacion.getProducto();
                 
                 // Calcular subtotal
-                BigDecimal subtotal = producto.getPrecio().multiply(BigDecimal.valueOf(productoVenta.getCantidad()));
+                Double subtotal = producto.getPrecio() * productoVenta.getCantidad();
                 
                 // Crear detalle de venta
                 DetalleVenta detalleVenta = new DetalleVenta();
@@ -86,7 +85,7 @@ public class VentaServiceImpl implements IVentaService{
                 detalleVentas.add(detalleVenta);
                 
                 // Sumar al total
-                totalVenta = totalVenta.add(subtotal);
+                totalVenta += subtotal;
                 
                 // Actualizar stock del producto
                 producto.setStock(producto.getStock() - productoVenta.getCantidad());

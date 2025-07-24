@@ -1,7 +1,5 @@
 package uce.edu.web.repository.model;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,9 +19,9 @@ public class DetalleVenta {
     @Column(name = "detv_cantidad")
     private Integer cantidad;
     @Column(name = "detv_precio_unitario")
-    private BigDecimal precioUnitario;
+    private Double precioUnitario;
     @Column(name = "detv_subtotal")
-    private BigDecimal subtotal;
+    private Double subtotal;
     @ManyToOne
     @JoinColumn(name = "detv_prod_id")
     private Producto producto;
@@ -47,19 +45,19 @@ public class DetalleVenta {
         this.cantidad = cantidad;
     }
 
-    public BigDecimal getPrecioUnitario() {
+    public Double getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(BigDecimal precioUnitario) {
+    public void setPrecioUnitario(Double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 
-    public BigDecimal getSubtotal() {
+    public Double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(BigDecimal subtotal) {
+    public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
     }
 

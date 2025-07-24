@@ -12,7 +12,7 @@ public class ProductoServiceImpl implements IProductoService {
     private IProductoRepo productoRepo;
 
     @Override
-    public void guadar(ProductoTo producto) {
+    public void guardar(ProductoTo producto) {
         Producto prod = this.productoRepo.seleccionarPorCodigo(producto.getCodigoBarras());
         if (prod != null) {
             prod.setNombre(producto.getNombre());

@@ -20,7 +20,7 @@ public class ProductoController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("")
     public Response crearProducto(@RequestBody ProductoTo productoTo) {
-        this.productoService.guadar(productoTo);
+        this.productoService.guardar(productoTo);
         return Response.ok().build();
     }
 }

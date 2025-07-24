@@ -1,6 +1,5 @@
 package uce.edu.web.repository.model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -27,7 +26,7 @@ public class Producto {
     @Column(name = "prod_stock")
     private Integer stock;
     @Column(name = "prod_precio")
-    private BigDecimal precio;
+    private Double precio;
     @OneToMany(mappedBy = "producto")
     private List<DetalleVenta> detalleVentas;
 
@@ -71,11 +70,11 @@ public class Producto {
         this.stock = stock;
     }
 
-    public BigDecimal getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

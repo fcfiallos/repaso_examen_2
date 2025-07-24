@@ -2,6 +2,7 @@ package uce.edu.web.repository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import uce.edu.web.repository.model.Producto;
@@ -19,10 +20,15 @@ public class ProductoRepoImpl implements IProductoRepo {
 
     @Override
     public Producto seleccionarPorCodigo(String codigoBarras) {
-        return entityManager
+        try {
+            return entityManager
                 .createQuery("SELECT p FROM Producto p WHERE p.codigoBarras = :codigoBarras", Producto.class)
                 .setParameter("codigoBarras", codigoBarras)
                 .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+        
     }
 
     @Override
